@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class PlayerCommandPreProcess implements Listener {
     @EventHandler
-    public void PlayerCommandPreProcess(PlayerCommandPreprocessEvent event){
+    public void PlayerCommandPreProcess(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
         boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if (isFrozen) {

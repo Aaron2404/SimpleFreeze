@@ -10,11 +10,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 public class FreezeCommand implements CommandExecutor {
     private final String StrikeTrough = ChatColor.GRAY + "§m" + StringUtils.repeat(" ", 64);
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("SimpleFreeze.use")) {
@@ -22,7 +20,7 @@ public class FreezeCommand implements CommandExecutor {
             return false;
         }
 
-        if(args.length == 0){
+        if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "You cannot freeze yourself.");
             return false;
         }
@@ -40,21 +38,17 @@ public class FreezeCommand implements CommandExecutor {
         }
 
 
-        HashMap<UUID, FreezeData> freezedata = SimpleFreeze.getInstance().getFreezeData();
-        if(freezedata.containsKey(target.getUniqueId())){
-            freezedata.remove(target.getUniqueId());
+        if (SimpleFreeze.getInstance().getFreezeData().containsKey(target.getUniqueId())) {
+            SimpleFreeze.getInstance().getFreezeData().remove(target.getUniqueId());
             sender.sendMessage(ChatColor.GREEN + "You have unfrozen " + target.getDisplayName() + "!");
             target.sendMessage(ChatColor.GREEN + "You have been unfrozen.");
-        }
-        else{
+        } else {
             FreezeData freezeData = new FreezeData();
             freezeData.setLocation(target.getLocation());
-            freezedata.put(target.getUniqueId(), freezeData);
+            SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);
             target.sendMessage(StrikeTrough + ChatColor.BOLD + "\n§cATTENTION!\n" + ChatColor.RED + "\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n" + StrikeTrough);
             sender.sendMessage(ChatColor.GREEN + "You have frozen " + target.getDisplayName() + "!");
         }
-
-
 
         return false;
     }

@@ -15,6 +15,7 @@ public final class SimpleFreeze extends JavaPlugin {
     @Getter
     private static SimpleFreeze instance;
     private final HashMap<UUID, FreezeData> freezeData = new HashMap<>();
+
     @Override
     public void onEnable() {
         instance = this;

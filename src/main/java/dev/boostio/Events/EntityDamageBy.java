@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class EntityDamageBy implements Listener {
     @EventHandler
-    public void EntityDamageBy(EntityDamageByEntityEvent event){
+    public void EntityDamageBy(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
             Player Attacker = (Player) event.getDamager();
             boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(Attacker.getUniqueId());

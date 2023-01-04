@@ -8,12 +8,12 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class BreakBlock implements Listener {
     @EventHandler
-    public void BreakBlock(BlockBreakEvent event){
-            Player player = event.getPlayer();
-            boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
-            if (isFrozen) {
-                event.setCancelled(true);
-            }
+    public void BreakBlock(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
+        if (isFrozen) {
+            event.setCancelled(true);
         }
     }
+}
 

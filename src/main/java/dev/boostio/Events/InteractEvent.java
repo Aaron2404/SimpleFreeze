@@ -8,12 +8,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class InteractEvent implements Listener {
     @EventHandler
-    public void PlayerInteract(PlayerInteractEvent event){
-            Player player = event.getPlayer();
-            boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
-            if (isFrozen) {
-                event.setCancelled(true);
-            }
+    public void PlayerInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
+        if (isFrozen) {
+            event.setCancelled(true);
         }
     }
+}
 
