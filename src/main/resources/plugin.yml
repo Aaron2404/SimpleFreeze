@@ -1,0 +1,15 @@
+name: Freeze
+version: '${project.version}'
+main: dev.boostio.ModFunctionality
+api-version: 1.18
+authors: [ Boostio ]
+
+commands:
+  freeze:
+    description: A command to freeze a player!
+    permission: modfunctionality.freeze.use
+    permission-message: Unknown command. Type "/help" for help
+permissions:
+  modfunctionality.freeze.use:
+    description: Allows the player to use the /freeze command.
+    default: op
