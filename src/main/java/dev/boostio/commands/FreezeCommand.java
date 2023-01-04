@@ -49,9 +49,10 @@ public class FreezeCommand implements CommandExecutor {
             FreezeData freezeData = new FreezeData();
 
             Location location = target.getLocation();
+
             World world = target.getWorld();
-            Block safeBlock  = world.getHighestBlockAt(location);
-            Location safeLocation = new Location(world, safeBlock.getX(), safeBlock.getY() + 2, safeBlock.getZ(), target.getLocation().getYaw(), target.getLocation().getPitch());
+            Block safeBlock  = target.getWorld().getBlockAt(location);
+            Location safeLocation = new Location(world, safeBlock.getX(), safeBlock.getY() + 1, safeBlock.getZ(), location.getYaw(), location.getPitch());
 
             freezeData.setLocation(safeLocation);
 
