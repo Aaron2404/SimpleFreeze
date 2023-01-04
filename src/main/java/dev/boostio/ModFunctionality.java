@@ -1,7 +1,7 @@
 package dev.boostio;
 
 import dev.boostio.Events.*;
-import dev.boostio.Utils.PlayerData;
+import dev.boostio.Utils.FreezeData;
 import dev.boostio.commands.FreezeCommand;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -15,7 +15,7 @@ public final class ModFunctionality extends JavaPlugin {
 
     @Getter
     private static ModFunctionality instance;
-    private final HashMap<UUID, PlayerData> playerData = new HashMap<>();
+    private final HashMap<UUID, FreezeData> freezeData = new HashMap<>();
     @Override
     public void onEnable() {
         instance = this;
@@ -23,7 +23,6 @@ public final class ModFunctionality extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("ratio");
 
         //events
-        getServer().getPluginManager().registerEvents(new AsyncPlayerPreLogin(), this);
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new EntityDamage(), this);

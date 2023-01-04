@@ -14,10 +14,10 @@ public class PlayerMove implements Listener {
     @EventHandler
     public void PlayerMoveEvent(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        boolean isFrozen = ModFunctionality.getInstance().getPlayerData().get(player.getUniqueId()).isFrozen();
+        boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if(isFrozen){
             Location locationNow = event.getPlayer().getLocation();
-            Location locationFrozen = ModFunctionality.getInstance().getPlayerData().get(player.getUniqueId()).getLocation();
+            Location locationFrozen = ModFunctionality.getInstance().getFreezeData().get(player.getUniqueId()).getLocation();
             if(locationFrozen.getX() != locationNow.getX() || locationFrozen.getZ() != locationNow.getZ() || locationFrozen.getY() != locationNow.getY()){
                 player.teleport(locationFrozen);
                 player.sendMessage(ChatColor.RED + "\n⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠\n" + ChatColor.BOLD + "ATTENTION!" + ChatColor.RED + "\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠\n");

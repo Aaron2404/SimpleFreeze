@@ -13,7 +13,7 @@ public class AsyncPlayerChat implements Listener {
     @EventHandler
     public void PlayerChatEvent(AsyncPlayerChatEvent event){{
         Player player = event.getPlayer();
-        boolean isFrozen = ModFunctionality.getInstance().getPlayerData().get(player.getUniqueId()).isFrozen();
+        boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if(isFrozen){
             String Message = event.getMessage();
             event.setCancelled(true);

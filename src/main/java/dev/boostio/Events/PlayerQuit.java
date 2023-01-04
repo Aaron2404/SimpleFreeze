@@ -14,8 +14,7 @@ public class PlayerQuit implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        boolean isFrozen = ModFunctionality.getInstance().getPlayerData().get(player.getUniqueId()).isFrozen();
-        ModFunctionality.getInstance().getPlayerData().remove(player.getUniqueId());
+        boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(player.getUniqueId());
 
         if(isFrozen){
             Bukkit.broadcast(player.getDisplayName() + ChatColor.RED + " Has left whilst frozen!", "modfunctionality.freeze.use");

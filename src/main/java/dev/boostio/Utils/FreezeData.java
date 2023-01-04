@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class PlayerData {
+public class FreezeData {
     private UUID uuid;
     private boolean isFrozen;
 

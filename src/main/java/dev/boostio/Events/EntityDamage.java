@@ -11,7 +11,7 @@ public class EntityDamage implements Listener {
     public void EntityDamageEvent(EntityDamageEvent event){
         if (event.getEntity() instanceof Player) {
         Player victim = (Player) event.getEntity();
-        boolean isFrozen = ModFunctionality.getInstance().getPlayerData().get(victim.getUniqueId()).isFrozen();
+        boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(victim.getUniqueId());
             if (isFrozen) {
                 event.setCancelled(true);
             }

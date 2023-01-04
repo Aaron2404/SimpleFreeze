@@ -1,13 +1,17 @@
 package dev.boostio.commands;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import dev.boostio.ModFunctionality;
-import dev.boostio.Utils.PlayerData;
+import dev.boostio.Utils.FreezeData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 public class FreezeCommand implements CommandExecutor {
     @Override
@@ -34,15 +38,16 @@ public class FreezeCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "The player " + args[0] + " is not online!");
             return false;
         }
-        PlayerData playerData = ModFunctionality.getInstance().getPlayerData().get(target.getUniqueId());
-        if(playerData.isFrozen()){
-            playerData.setFrozen(false);
+        HashMap<UUID, FreezeData> freezedata = ModFunctionality.getInstance().getFreezeData();
+        if(freezedata.containsKey(target.getUniqueId())){
+            freezedata.remove(target.getUniqueId());
             player.sendMessage("You have unfrozen " + target.getDisplayName());
             target.sendMessage(ChatColor.GREEN + "You have been unfrozen.");
         }
         else{
-            playerData.setFrozen(true);
-            playerData.setLocation(target.getLocation());
+            FreezeData freezeData = new FreezeData();
+            freezeData.setLocation(target.getLocation());
+            freezedata.put(target.getUniqueId(), freezeData);
             target.sendMessage(ChatColor.RED + "You have been frozen.");
             player.sendMessage("You have frozen " + target.getDisplayName());
         }
