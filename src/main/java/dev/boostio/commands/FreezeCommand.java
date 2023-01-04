@@ -1,7 +1,6 @@
 package dev.boostio.commands;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import dev.boostio.ModFunctionality;
+import dev.boostio.SimpleFreeze;
 import dev.boostio.Utils.FreezeData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,7 +21,7 @@ public class FreezeCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        if (!sender.hasPermission("modfunctionality.freeze.use")) {
+        if (!sender.hasPermission("SimpleFreeze.use")) {
             player.sendMessage(ChatColor.RED + "You do not have the required permission to use this command.");
             return false;
         }
@@ -38,7 +37,14 @@ public class FreezeCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "The player " + args[0] + " is not online!");
             return false;
         }
-        HashMap<UUID, FreezeData> freezedata = ModFunctionality.getInstance().getFreezeData();
+
+        if (target.hasPermission("SimpleFreeze.bypass")) {
+            player.sendMessage(ChatColor.RED + "The person you're trying to freeze is not able to be frozen.");
+            return false;
+        }
+
+
+        HashMap<UUID, FreezeData> freezedata = SimpleFreeze.getInstance().getFreezeData();
         if(freezedata.containsKey(target.getUniqueId())){
             freezedata.remove(target.getUniqueId());
             player.sendMessage("You have unfrozen " + target.getDisplayName());

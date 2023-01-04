@@ -1,6 +1,6 @@
 package dev.boostio.Events;
 
-import dev.boostio.ModFunctionality;
+import dev.boostio.SimpleFreeze;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,7 +11,7 @@ public class EntityDamage implements Listener {
     public void EntityDamage(EntityDamageEvent event){
         if (event.getEntity() instanceof Player) {
         Player victim = (Player) event.getEntity();
-        boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(victim.getUniqueId());
+        boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(victim.getUniqueId());
             if (isFrozen) {
                 event.setCancelled(true);
             }

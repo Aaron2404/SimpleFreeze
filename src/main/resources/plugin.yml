@@ -1,15 +1,18 @@
-name: Freeze
+name: SimpleFreeze
 version: '${project.version}'
-main: dev.boostio.ModFunctionality
+main: dev.boostio.SimpleFreeze
 api-version: 1.18
 authors: [ Boostio ]
 
 commands:
   freeze:
     description: A command to freeze a player!
-    permission: modfunctionality.freeze.use
+    permission: SimpleFreeze.use
     permission-message: Unknown command. Type "/help" for help
 permissions:
-  modfunctionality.freeze.use:
+  SimpleFreeze.use:
     description: Allows the player to use the /freeze command.
+    default: op
+  SimpleFreeze.bypass:
+    description: Prevents the player from being frozen.
     default: op
