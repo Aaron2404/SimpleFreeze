@@ -35,6 +35,14 @@ public class FreezeCommand implements CommandExecutor {
             return false;
         }
 
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            if (target.equals(player)) {
+                sender.sendMessage(ChatColor.RED + "You cannot freeze yourself.");
+                return false;
+            }
+        }
+
         if (target.hasPermission("SimpleFreeze.bypass")) {
             sender.sendMessage(ChatColor.RED + "This player cannot be frozen.");
             return false;
@@ -51,7 +59,7 @@ public class FreezeCommand implements CommandExecutor {
             Location location = target.getLocation();
 
             World world = target.getWorld();
-            Block safeBlock  = target.getWorld().getHighestBlockAt(location);
+            Block safeBlock = target.getWorld().getHighestBlockAt(location);
             Location safeLocation = new Location(world, safeBlock.getX(), safeBlock.getY() + 1, safeBlock.getZ(), location.getYaw(), location.getPitch());
 
             freezeData.setLocation(safeLocation);
