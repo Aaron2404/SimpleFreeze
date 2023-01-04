@@ -2,7 +2,7 @@ name: SimpleFreeze
 version: '${project.version}'
 main: dev.boostio.SimpleFreeze
 api-version: 1.18
-authors: [ Boostio ]
+authors: [ Boostio, Bram ]
 
 commands:
   freeze:
