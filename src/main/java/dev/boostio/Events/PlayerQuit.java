@@ -15,7 +15,7 @@ public class PlayerQuit implements Listener {
         boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
 
         if (isFrozen) {
-            Bukkit.broadcast(player.getDisplayName() + ChatColor.RED + " Has left whilst frozen!", "modfunctionality.freeze.use");
+            Bukkit.broadcast(ChatColor.RED + "§7[§l§cWARNING§r§7]§c " + player.getDisplayName() + " has left whilst frozen!", "simplefreeze.use");
         }
     }
 }
