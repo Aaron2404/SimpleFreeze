@@ -29,6 +29,7 @@ public final class ModFunctionality extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityDamageBy(), this);
         getServer().getPluginManager().registerEvents(new AsyncPlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InteractEvent(), this);
+        getServer().getPluginManager().registerEvents(new PlayerCommandPreProcess(), this);
 
 
         //Command
