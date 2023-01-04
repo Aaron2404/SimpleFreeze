@@ -3,6 +3,7 @@ version: '${project.version}'
 main: dev.boostio.SimpleFreeze
 api-version: 1.18
 authors: [ Boostio, Bram ]
+description: A simple plugin to freeze players, opting for the best performance.
 
 commands:
   freeze:
