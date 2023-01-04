@@ -5,6 +5,9 @@ import dev.boostio.Utils.FreezeData;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,7 +47,14 @@ public class FreezeCommand implements CommandExecutor {
             target.sendMessage(ChatColor.GREEN + "You have been unfrozen.");
         } else {
             FreezeData freezeData = new FreezeData();
-            freezeData.setLocation(target.getLocation());
+
+            Location location = target.getLocation();
+            World world = target.getWorld();
+            Block safeBlock  = world.getHighestBlockAt(location);
+            Location safeLocation = safeBlock.getLocation();
+
+            freezeData.setLocation(safeLocation);
+
             SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);
             target.sendMessage(StrikeTrough + ChatColor.BOLD + "\n§cATTENTION!\n" + ChatColor.RED + "\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n" + StrikeTrough);
             sender.sendMessage(ChatColor.GREEN + "You have frozen " + target.getDisplayName() + "!");
