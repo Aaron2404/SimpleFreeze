@@ -26,7 +26,10 @@ public final class ModFunctionality extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new EntityDamage(), this);
+        getServer().getPluginManager().registerEvents(new EntityDamageBy(), this);
         getServer().getPluginManager().registerEvents(new AsyncPlayerChat(), this);
+        getServer().getPluginManager().registerEvents(new InteractEvent(), this);
+
 
         //Command
         getCommand("freeze").setExecutor(new FreezeCommand());

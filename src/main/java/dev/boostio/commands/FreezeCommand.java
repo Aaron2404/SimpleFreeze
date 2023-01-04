@@ -27,7 +27,7 @@ public class FreezeCommand implements CommandExecutor {
             return false;
         }
 
-        if(args.equals(null)){
+        if(args.length == 0){
             player.sendMessage(ChatColor.RED + "You cannot freeze yourself.");
             return false;
         }

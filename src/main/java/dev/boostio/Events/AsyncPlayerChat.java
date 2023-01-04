@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class AsyncPlayerChat implements Listener {
     @EventHandler
-    public void PlayerChatEvent(AsyncPlayerChatEvent event){{
+    public void PlayerChat(AsyncPlayerChatEvent event){{
         Player player = event.getPlayer();
         boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if(isFrozen){

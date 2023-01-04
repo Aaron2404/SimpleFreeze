@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class PlayerMove implements Listener {
 
     @EventHandler
-    public void PlayerMoveEvent(PlayerMoveEvent event){
+    public void PlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
         boolean isFrozen = ModFunctionality.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if(isFrozen){
