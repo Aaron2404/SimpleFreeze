@@ -2,6 +2,7 @@ package dev.boostio.commands;
 
 import dev.boostio.SimpleFreeze;
 import dev.boostio.Utils.FreezeData;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -13,21 +14,16 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class FreezeCommand implements CommandExecutor {
+    private final String StrikeTrough = ChatColor.GRAY + "§m" + StringUtils.repeat(" ", 64);
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "Only players are allowed to execute this command :(");
-            return false;
-        }
-
-        Player player = (Player) sender;
         if (!sender.hasPermission("SimpleFreeze.use")) {
-            player.sendMessage(ChatColor.RED + "You do not have the required permission to use this command.");
+            sender.sendMessage(ChatColor.RED + "You do not have the required permission to use this command.");
             return false;
         }
 
         if(args.length == 0){
-            player.sendMessage(ChatColor.RED + "You cannot freeze yourself.");
+            sender.sendMessage(ChatColor.RED + "You cannot freeze yourself.");
             return false;
         }
 
@@ -39,7 +35,7 @@ public class FreezeCommand implements CommandExecutor {
         }
 
         if (target.hasPermission("SimpleFreeze.bypass")) {
-            player.sendMessage(ChatColor.RED + "The person you're trying to freeze is not able to be frozen.");
+            sender.sendMessage(ChatColor.RED + "This player cannot be frozen.");
             return false;
         }
 
@@ -47,15 +43,15 @@ public class FreezeCommand implements CommandExecutor {
         HashMap<UUID, FreezeData> freezedata = SimpleFreeze.getInstance().getFreezeData();
         if(freezedata.containsKey(target.getUniqueId())){
             freezedata.remove(target.getUniqueId());
-            player.sendMessage("You have unfrozen " + target.getDisplayName());
+            sender.sendMessage(ChatColor.GREEN + "You have unfrozen " + target.getDisplayName() + "!");
             target.sendMessage(ChatColor.GREEN + "You have been unfrozen.");
         }
         else{
             FreezeData freezeData = new FreezeData();
             freezeData.setLocation(target.getLocation());
             freezedata.put(target.getUniqueId(), freezeData);
-            target.sendMessage(ChatColor.RED + "You have been frozen.");
-            player.sendMessage("You have frozen " + target.getDisplayName());
+            target.sendMessage(StrikeTrough + ChatColor.BOLD + "\n§cATTENTION!\n" + ChatColor.RED + "\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n" + StrikeTrough);
+            sender.sendMessage(ChatColor.GREEN + "You have frozen " + target.getDisplayName() + "!");
         }
 
 
