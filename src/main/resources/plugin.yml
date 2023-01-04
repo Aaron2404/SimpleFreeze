@@ -9,6 +9,8 @@ commands:
     description: A command to freeze a player!
     permission: SimpleFreeze.use
     permission-message: Unknown command. Type "/help" for help
+    aliases:
+      - ss
 permissions:
   SimpleFreeze.use:
     description: Allows the player to use the /freeze command.
