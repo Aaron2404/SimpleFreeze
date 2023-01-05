@@ -13,8 +13,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static dev.boostio.SimpleFreeze.StrikeTrough;
+
 public class FreezeCommand implements CommandExecutor {
-    private final String StrikeTrough = ChatColor.GRAY + "§m" + StringUtils.repeat(" ", 64);
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -68,7 +69,7 @@ public class FreezeCommand implements CommandExecutor {
                 freezeData.setLocation(location);
 
             SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);
-            target.sendMessage(StrikeTrough + ChatColor.BOLD + "\n§cATTENTION!\n" + ChatColor.RED + "\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n" + StrikeTrough);
+            target.sendMessage(StrikeTrough + SimpleFreeze.config.getString("playerFreezeMessage") + StrikeTrough);
             sender.sendMessage(ChatColor.GREEN + "You have frozen " + target.getDisplayName() + "!");
         }
 

@@ -8,6 +8,17 @@
 #                       | |
 #                       |_|
 
+#You can add a line break to strings using '\n'
+#You can add colors and/or text variants using standard minecraft color codes for example: "§c"
 
 #Makes sure players are always teleported to the ground when getting frozen, however this does mean they get teleported to the surface when in a cave for example.
 safeLocation: true
+
+#Customize the message a player receives upon trying to use a command whilst frozen.
+playerCommandMessage: "You are frozen and now unable to send commands, if you want to reach staff you can type in chat, only staff members can see your messages."
+
+#This is the message the player will see upon being frozen or trying to move.
+playerFreezeMessage: "\n§l§cATTENTION!\n§c\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n"
+
+#Add gray lines above and bellow the freeze message.
+playerFreezeMessageLines: true

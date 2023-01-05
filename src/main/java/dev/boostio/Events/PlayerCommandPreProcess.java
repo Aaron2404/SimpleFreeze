@@ -14,7 +14,7 @@ public class PlayerCommandPreProcess implements Listener {
         boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if (isFrozen) {
             event.setCancelled(true);
-            player.sendMessage(ChatColor.RED + "You are frozen and now unable to send commands, if you want to reach staff you can type in chat, only staff members can see your messages.");
+            player.sendMessage(ChatColor.RED + SimpleFreeze.config.getString("playerCommandMessage"));
         }
     }
 }
