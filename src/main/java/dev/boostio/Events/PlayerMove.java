@@ -1,9 +1,6 @@
 package dev.boostio.Events;
 
 import dev.boostio.SimpleFreeze;
-import dev.boostio.commands.FreezeCommand;
-import org.apache.commons.lang.StringUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

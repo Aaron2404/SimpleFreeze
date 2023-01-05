@@ -2,7 +2,6 @@ package dev.boostio.commands;
 
 import dev.boostio.SimpleFreeze;
 import dev.boostio.Utils.FreezeData;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -59,13 +58,12 @@ public class FreezeCommand implements CommandExecutor {
 
             Location location = target.getLocation();
 
-            if(SimpleFreeze.config.getBoolean("safeLocation")){
+            if (SimpleFreeze.config.getBoolean("safeLocation")) {
                 World world = target.getWorld();
                 Block safeBlock = target.getWorld().getHighestBlockAt(location);
                 Location safeLocation = new Location(world, safeBlock.getX(), safeBlock.getY() + 1, safeBlock.getZ(), location.getYaw(), location.getPitch());
                 freezeData.setLocation(safeLocation);
-            }
-            else
+            } else
                 freezeData.setLocation(location);
 
             SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);

@@ -16,12 +16,11 @@ import java.util.UUID;
 @Getter
 public final class SimpleFreeze extends JavaPlugin {
 
+    public static String StrikeTrough = ChatColor.GRAY + "§m" + StringUtils.repeat(" ", 64);
+    public static FileConfiguration config;
     @Getter
     private static SimpleFreeze instance;
     private final HashMap<UUID, FreezeData> freezeData = new HashMap<>();
-    public static String StrikeTrough = ChatColor.GRAY + "§m" + StringUtils.repeat(" ", 64);
-
-    public static FileConfiguration config;
 
     @Override
     public void onEnable() {
@@ -33,7 +32,7 @@ public final class SimpleFreeze extends JavaPlugin {
         try {
             config = getConfig();
 
-            if(!SimpleFreeze.config.getBoolean("playerFreezeMessageLines"))
+            if (!SimpleFreeze.config.getBoolean("playerFreezeMessageLines"))
                 StrikeTrough = "";
 
         } catch (Exception e) {
