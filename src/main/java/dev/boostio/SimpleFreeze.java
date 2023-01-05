@@ -4,6 +4,8 @@ import dev.boostio.Events.*;
 import dev.boostio.Utils.FreezeData;
 import dev.boostio.commands.FreezeCommand;
 import lombok.Getter;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -16,9 +18,21 @@ public final class SimpleFreeze extends JavaPlugin {
     private static SimpleFreeze instance;
     private final HashMap<UUID, FreezeData> freezeData = new HashMap<>();
 
+    public static FileConfiguration config;
+
     @Override
     public void onEnable() {
         instance = this;
+
+        saveDefaultConfig();
+
+        //Try to get the settings from the config file.
+        try {
+            config = getConfig();
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("Something went wrong while getting the settings from the config file");
+        }
+
 
         //events
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);

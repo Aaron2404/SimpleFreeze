@@ -58,11 +58,14 @@ public class FreezeCommand implements CommandExecutor {
 
             Location location = target.getLocation();
 
-            World world = target.getWorld();
-            Block safeBlock = target.getWorld().getHighestBlockAt(location);
-            Location safeLocation = new Location(world, safeBlock.getX(), safeBlock.getY() + 1, safeBlock.getZ(), location.getYaw(), location.getPitch());
-
-            freezeData.setLocation(safeLocation);
+            if(SimpleFreeze.config.getBoolean("safeLocation")){
+                World world = target.getWorld();
+                Block safeBlock = target.getWorld().getHighestBlockAt(location);
+                Location safeLocation = new Location(world, safeBlock.getX(), safeBlock.getY() + 1, safeBlock.getZ(), location.getYaw(), location.getPitch());
+                freezeData.setLocation(safeLocation);
+            }
+            else
+                freezeData.setLocation(location);
 
             SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);
             target.sendMessage(StrikeTrough + ChatColor.BOLD + "\n§cATTENTION!\n" + ChatColor.RED + "\nYou have been frozen! join discord.gg/vanarchy\nIf you log out you will be BANNED.\n" + StrikeTrough);
