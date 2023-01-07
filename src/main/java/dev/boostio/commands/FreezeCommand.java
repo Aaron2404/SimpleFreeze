@@ -67,6 +67,7 @@ public class FreezeCommand implements CommandExecutor {
                 freezeData.setLocation(location);
 
             SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);
+            target.sendTitle(ChatColor.RED + "You have been frozen", null);
             target.sendMessage(StrikeTrough + SimpleFreeze.config.getString("playerFreezeMessage") + StrikeTrough);
             sender.sendMessage(ChatColor.GREEN + "You have frozen " + target.getDisplayName() + "!");
         }
