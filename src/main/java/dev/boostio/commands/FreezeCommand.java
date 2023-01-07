@@ -2,15 +2,17 @@ package dev.boostio.commands;
 
 import dev.boostio.SimpleFreeze;
 import dev.boostio.Utils.FreezeData;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EnderDragon;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LightningStrike;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import static dev.boostio.SimpleFreeze.StrikeTrough;
 
@@ -51,8 +53,12 @@ public class FreezeCommand implements CommandExecutor {
 
         if (SimpleFreeze.getInstance().getFreezeData().containsKey(target.getUniqueId())) {
             SimpleFreeze.getInstance().getFreezeData().remove(target.getUniqueId());
-            sender.sendMessage(ChatColor.GREEN + "You have unfrozen " + target.getDisplayName() + "!");
+            target.removePotionEffect(PotionEffectType.BLINDNESS);
+            target.playSound(target.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1, 1);
+            target.resetTitle();
+            Bukkit.broadcast(ChatColor.GREEN + target.getDisplayName() + " has been unfrozen by " + sender.getName() + "!", "SimpleFreeze.use");
             target.sendMessage(ChatColor.GREEN + "You have been unfrozen.");
+            target.sendTitle(ChatColor.GREEN + "You have been unfrozen!", null, 0, 60, 20);
         } else {
             FreezeData freezeData = new FreezeData();
 
@@ -67,9 +73,11 @@ public class FreezeCommand implements CommandExecutor {
                 freezeData.setLocation(location);
 
             SimpleFreeze.getInstance().getFreezeData().put(target.getUniqueId(), freezeData);
-            target.sendTitle(ChatColor.RED + "You have been frozen", null);
+            target.sendTitle(ChatColor.RED + "You have been frozen!", ChatColor.DARK_PURPLE +  "Join Discord.gg/Vanarchy", 0, 800000000, 0);
+            target.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000000000, 0));
+            target.playSound(target.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1, 1);
             target.sendMessage(StrikeTrough + SimpleFreeze.config.getString("playerFreezeMessage") + StrikeTrough);
-            sender.sendMessage(ChatColor.GREEN + "You have frozen " + target.getDisplayName() + "!");
+            Bukkit.broadcast(ChatColor.RED + target.getDisplayName() + " has been frozen by " + sender.getName() + "!", "SimpleFreeze.use");
         }
 
         return false;
