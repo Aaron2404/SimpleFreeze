@@ -26,7 +26,7 @@ playerFreezeMessageLines: true
 freezeTitle: true
 primaryFreezeMessage: "§cYou have been frozen!"
 secondaryFreezeMessage: "§5Join Discord.gg/Vanarchy"
-#These variables determine the amount of time the message will appear, stay and leave. The values are measured in ticks. 20 ticks is equal 1 second.
+#These variables determine the amount of time the message will appear, stay and leave. The values are measured in ticks. 20 ticks is equal to 1 second.
 fadeIn: 0
 stay: 800000000
 fadeOut: 0
