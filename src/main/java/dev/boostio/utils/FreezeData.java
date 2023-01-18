@@ -1,4 +1,4 @@
-package dev.boostio.Utils;
+package dev.boostio.utils;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,6 @@ import java.util.UUID;
 public class FreezeData {
     private UUID uuid;
     private boolean isFrozen;
-
     private Location Location;
 
 }

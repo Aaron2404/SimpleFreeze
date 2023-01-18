@@ -1,8 +1,8 @@
 package dev.boostio;
 
-import dev.boostio.Events.*;
-import dev.boostio.Utils.FreezeData;
 import dev.boostio.commands.FreezeCommand;
+import dev.boostio.events.*;
+import dev.boostio.utils.FreezeData;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;

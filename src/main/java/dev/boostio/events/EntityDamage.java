@@ -1,4 +1,4 @@
-package dev.boostio.Events;
+package dev.boostio.events;
 
 import dev.boostio.SimpleFreeze;
 import org.bukkit.entity.Player;

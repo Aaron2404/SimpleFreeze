@@ -1,7 +1,7 @@
 package dev.boostio.commands;
 
 import dev.boostio.SimpleFreeze;
-import dev.boostio.Utils.FreezeData;
+import dev.boostio.utils.FreezeData;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;

@@ -1,20 +1,18 @@
-package dev.boostio.Events;
+package dev.boostio.events;
 
 import dev.boostio.SimpleFreeze;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.block.BlockBreakEvent;
 
-public class PlayerCommandPreProcess implements Listener {
+public class BreakBlock implements Listener {
     @EventHandler
-    public void PlayerCommandPreProcess(PlayerCommandPreprocessEvent event) {
+    public void BreakBlock(BlockBreakEvent event) {
         Player player = event.getPlayer();
         boolean isFrozen = SimpleFreeze.getInstance().getFreezeData().containsKey(player.getUniqueId());
         if (isFrozen) {
             event.setCancelled(true);
-            player.sendMessage(ChatColor.RED + SimpleFreeze.config.getString("playerCommandMessage"));
         }
     }
 }
