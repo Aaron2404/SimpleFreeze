@@ -1,6 +1,7 @@
 # SimpleFreeze
 This Minecraft plugin, as the name suggests, effectively freezes a player.
 
+
 ## Features
 - provides the capability to immobilize players, effectively preventing them from both moving and executing commands.
 - Permissions
