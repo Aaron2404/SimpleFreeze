@@ -2,7 +2,7 @@
 This Minecraft plugin, as the name suggests, effectively freezes a player.
 
 ## Features
-- Freeze a player.
+- provides the capability to immobilize players, effectively preventing them from both moving and executing commands.
 - Permissions
 - Configurable messages
 
